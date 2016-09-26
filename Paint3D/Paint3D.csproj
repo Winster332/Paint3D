@@ -106,7 +106,7 @@
     <Compile Include="Core\GEngine.cs" />
     <Compile Include="Core\GGraphics.cs" />
     <Compile Include="Core\GManagerFile.cs" />
-    <Compile Include="Core\Logger.cs" />
+    <Compile Include="Core\GLogger.cs" />
     <Compile Include="Core\UI\GButtonFlat.cs" />
     <Compile Include="Core\UI\GCheckBox.cs" />
     <Compile Include="Core\UI\GInstrumentPanel.cs" />
