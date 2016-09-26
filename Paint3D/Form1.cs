@@ -15,6 +15,7 @@ namespace Paint3D
 		public Form1()
 		{
 			InitializeComponent();
+			glControl.InitializeContexts();
 		}
 
 		private void Form1_Load(object sender, EventArgs e)

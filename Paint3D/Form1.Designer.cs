@@ -28,21 +28,42 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.glControl = new Tao.Platform.Windows.SimpleOpenGlControl();
 			this.SuspendLayout();
+			// 
+			// glControl
+			// 
+			this.glControl.AccumBits = ((byte)(0));
+			this.glControl.AutoCheckErrors = false;
+			this.glControl.AutoFinish = false;
+			this.glControl.AutoMakeCurrent = true;
+			this.glControl.AutoSwapBuffers = true;
+			this.glControl.BackColor = System.Drawing.Color.Black;
+			this.glControl.ColorBits = ((byte)(32));
+			this.glControl.DepthBits = ((byte)(16));
+			this.glControl.Location = new System.Drawing.Point(109, 152);
+			this.glControl.Name = "glControl";
+			this.glControl.Size = new System.Drawing.Size(50, 50);
+			this.glControl.StencilBits = ((byte)(0));
+			this.glControl.TabIndex = 0;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(284, 261);
+			this.ClientSize = new System.Drawing.Size(440, 341);
+			this.Controls.Add(this.glControl);
 			this.Name = "Form1";
 			this.Text = "Form1";
+			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
+
+		private Tao.Platform.Windows.SimpleOpenGlControl glControl;
 	}
 }
 
