@@ -13,7 +13,7 @@ namespace Paint3D.Core
 		/// <summary>
 		/// Путь к сохраненным файлам
 		/// </summary>
-		public const String PATH_DATA = @"Data\";
+		public const String PATH_DATA = @"Save\";
 		/// <summary>
 		/// Сериализует объект
 		/// </summary>
