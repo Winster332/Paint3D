@@ -112,14 +112,19 @@
     <Compile Include="Core\Models\GBox.cs" />
     <Compile Include="Core\Models\GPolygon.cs" />
     <Compile Include="Core\Models\GSphere.cs" />
-    <Compile Include="Core\UI\GButtonFlat.cs" />
+    <Compile Include="Core\UI\GButtonFlat.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Core\UI\GCheckBox.cs" />
     <Compile Include="Core\UI\GInstrumentPanel.cs" />
+    <Compile Include="Core\UI\GLoading.cs" />
     <Compile Include="Core\UI\GMenuPanel.cs" />
     <Compile Include="Core\UI\GMessageBox.cs" />
     <Compile Include="Core\UI\GPropPanel.cs" />
     <Compile Include="Core\UI\GScrollValue.cs" />
-    <Compile Include="Core\UI\GTextBox.cs" />
+    <Compile Include="Core\UI\GTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Core\UI\GMessageShow.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
