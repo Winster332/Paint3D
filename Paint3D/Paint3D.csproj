@@ -107,6 +107,11 @@
     <Compile Include="Core\GGraphics.cs" />
     <Compile Include="Core\GManagerFile.cs" />
     <Compile Include="Core\GLogger.cs" />
+    <Compile Include="Core\GWorld.cs" />
+    <Compile Include="Core\Models\GBaseModel.cs" />
+    <Compile Include="Core\Models\GBox.cs" />
+    <Compile Include="Core\Models\GPolygon.cs" />
+    <Compile Include="Core\Models\GSphere.cs" />
     <Compile Include="Core\UI\GButtonFlat.cs" />
     <Compile Include="Core\UI\GCheckBox.cs" />
     <Compile Include="Core\UI\GInstrumentPanel.cs" />
