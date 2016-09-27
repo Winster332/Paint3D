@@ -21,12 +21,12 @@ namespace Paint3D.Core
 		/// <param name="obj">Объект</param>
 		public void SetDataXMLFile(string name, object obj)
 		{
-			String all_path = PATH_DATA + name + "//" + name + ".xml";
+			String all_path = PATH_DATA + name + "\\" + name + ".xml";
 			XmlSerializer serializer = new XmlSerializer(obj.GetType());
 
 			if (!Directory.Exists(PATH_DATA))
 				Directory.CreateDirectory(PATH_DATA);
-			Directory.CreateDirectory(name);
+			Directory.CreateDirectory(PATH_DATA + name);
 
 			using (Stream stream = new FileStream(all_path, FileMode.Create))
 			{
@@ -41,14 +41,14 @@ namespace Paint3D.Core
 		/// <returns></returns>
 		public object GetDataXMLFile(string name, Type type)
 		{
-			String all_path = PATH_DATA + name + "//" + name +  ".xml";
+			String all_path = PATH_DATA + name + "\\" + name +  ".xml";
 			XmlSerializer serializer = new XmlSerializer(type);
 			Object obj_res = null;
 
 			if (!Directory.Exists(PATH_DATA))
 				Directory.CreateDirectory(PATH_DATA);
-
-			using (Stream stream = new FileStream(all_path, FileMode.Open))
+			System.Windows.Forms.MessageBox.Show(name);
+			using (Stream stream = new FileStream(name, FileMode.Open))
 			{
 				obj_res = serializer.Deserialize(stream);
 			}
