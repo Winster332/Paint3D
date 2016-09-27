@@ -121,9 +121,6 @@
     <Compile Include="Core\UI\GPropPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Core\UI\GScrollValue.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Core\UI\GTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
