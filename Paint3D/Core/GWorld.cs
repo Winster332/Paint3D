@@ -29,5 +29,9 @@ namespace Paint3D.Core
 		{
 			models.Add(new GSphere(engine, x, y, z, rad, r, g, b));
 		}
+		public List<GBaseModel> GetListModels()
+		{
+			return this.models;
+		}
 	}
 }
