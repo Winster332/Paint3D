@@ -72,6 +72,21 @@ namespace Paint3D
 			};
 
 			propPanel = new Core.UI.GPropPanel(glControl);
+			propPanel.Clicks += (o, ee) =>
+			{
+				string name = ((Button)o).Text.ToString();
+
+				switch (name)
+				{
+					case "Кубик":
+						double[] color = propPanel.GetColor();
+						this.Text = "Кубик размер[" + propPanel.GetSize()+"] Цвет[R:" + color[0] + " G:" + color[1] + " B:" + color[2] + "]";
+						break;
+					case "Сфера":
+
+						break;
+                };
+			};
 		}
 
 		private void ShowUI()

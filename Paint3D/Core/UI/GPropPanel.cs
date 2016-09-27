@@ -45,20 +45,20 @@ namespace Paint3D.Core.UI
 			textBox[0].Location = new Point(this.Width - textBox[0].Width, 0);
 			textBox[1] = new GTextBox(this);
 			textBox[1].Location = new Point(this.Width - textBox[0].Width, but[1].Top+4);
-			textBox[0].Text = "R:0.0 G:1.0 B:0.0";
+			textBox[0].Text = "R:0,0 G:1,0 B:0,0";
 			textBox[1].Text = "1";
 
 			Label[] lab = new Label[2];
 			lab[0] = new Label();
 			lab[0].ForeColor = Color.FromArgb(192,192,192);
-			lab[0].Text = "Цвет: ";
+			lab[0].Text = "Цвет:";
 			lab[0].Left = but[0].Right;
 			lab[0].Top = 3;
 			this.Controls.Add(lab[0]);
 
 			lab[1] = new Label();
 			lab[1].ForeColor = Color.FromArgb(192, 192, 192);
-			lab[1].Text = "Размер: ";
+			lab[1].Text = "Размер:";
 			lab[1].Left = but[1].Right;
 			lab[1].Top = but[1].Top+5;
 			this.Controls.Add(lab[1]);
@@ -69,13 +69,13 @@ namespace Paint3D.Core.UI
 		{
 			return float.Parse(textBox[1].Text);
 		}
-		public float[] GetColor()
+		public double[] GetColor()
 		{
-			float[] res = new float[3];
+			double[] res = new double[3];
 
-			res[0] = float.Parse(textBox[0].Text.Substring(textBox[0].Text.IndexOf("R:")+1, 3));
-			res[1] = float.Parse(textBox[0].Text.Substring(textBox[0].Text.IndexOf("G:")+1, 3));
-			res[2] = float.Parse(textBox[0].Text.Substring(textBox[0].Text.IndexOf("B:")+1, 3));
+			res[0] = double.Parse(textBox[0].Text.Substring(textBox[0].Text.IndexOf("R:")+2, 3));
+			res[1] = double.Parse(textBox[0].Text.Substring(textBox[0].Text.IndexOf("G:")+2, 3));
+			res[2] = double.Parse(textBox[0].Text.Substring(textBox[0].Text.IndexOf("B:")+2, 3));
 
 			return res;
 		}
