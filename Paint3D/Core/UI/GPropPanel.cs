@@ -67,15 +67,34 @@ namespace Paint3D.Core.UI
 		}
 		public float GetSize()
 		{
-			return float.Parse(textBox[1].Text);
+			float res = 1;
+
+			try
+			{
+				float.Parse(textBox[1].Text);
+			}
+			catch { MessageBox.Show("Неверно указаны параметры размера", "Ошибка"); }
+
+			return res;
 		}
 		public double[] GetColor()
 		{
 			double[] res = new double[3];
 
-			res[0] = double.Parse(textBox[0].Text.Substring(textBox[0].Text.IndexOf("R:")+2, 3));
-			res[1] = double.Parse(textBox[0].Text.Substring(textBox[0].Text.IndexOf("G:")+2, 3));
-			res[2] = double.Parse(textBox[0].Text.Substring(textBox[0].Text.IndexOf("B:")+2, 3));
+			try
+			{
+				res[0] = double.Parse(textBox[0].Text.Substring(textBox[0].Text.IndexOf("R:") + 2, 3));
+				res[1] = double.Parse(textBox[0].Text.Substring(textBox[0].Text.IndexOf("G:") + 2, 3));
+				res[2] = double.Parse(textBox[0].Text.Substring(textBox[0].Text.IndexOf("B:") + 2, 3));
+			}
+			catch
+			{
+				res[0] = 0;
+				res[1] = 0;
+				res[2] = 0;
+
+				MessageBox.Show("Неверно указаны параметры цвета. Диапазон от 0,0 до 1,0", "Ошибка");
+			}
 
 			return res;
 		}
