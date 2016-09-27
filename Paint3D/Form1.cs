@@ -70,22 +70,39 @@ namespace Paint3D
 					case "Выйти": Application.Exit(); break;
 				}
 			};
+			bool IsCube = true;
 
 			propPanel = new Core.UI.GPropPanel(glControl);
 			propPanel.Clicks += (o, ee) =>
 			{
 				string name = ((Button)o).Text.ToString();
+				double[] color = propPanel.GetColor();
 
 				switch (name)
 				{
 					case "Кубик":
-						double[] color = propPanel.GetColor();
-						this.Text = "Кубик размер[" + propPanel.GetSize()+"] Цвет[R:" + color[0] + " G:" + color[1] + " B:" + color[2] + "]";
+						IsCube = true;
 						break;
 					case "Сфера":
-
+						IsCube = false;
 						break;
                 };
+
+				this.Text = name + " размер[" + propPanel.GetSize() + "] Цвет[R:" + color[0] + " G:" + color[1] + " B:" + color[2] + "]";
+			};
+
+			glControl.MouseDown += (o, ee) =>
+			{
+				if (engine.GetCamera().IsMouseLock)
+				{
+					double[] color = propPanel.GetColor();
+					float size = propPanel.GetSize();
+                    glControl.Focus();
+					
+					if (IsCube)
+						engine.GetWorld().AddBox(engine.GetCamera().posX + engine.GetCamera().lookX / 50, engine.GetCamera().posY + engine.GetCamera().lookY / 50, engine.GetCamera().posZ + engine.GetCamera().lookZ / 50, size, (float)color[0], (float)color[1], (float)color[2]);
+					else engine.GetWorld().AddSphere(engine.GetCamera().posX + engine.GetCamera().lookX / 50, engine.GetCamera().posY + engine.GetCamera().lookY / 50, engine.GetCamera().posZ + engine.GetCamera().lookZ / 50, size, (float)color[0], (float)color[1], (float)color[2]);
+				}
 			};
 		}
 
