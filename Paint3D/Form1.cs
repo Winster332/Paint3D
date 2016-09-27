@@ -49,9 +49,6 @@ namespace Paint3D
 				}
 			};
 
-			engine.GetWorld().AddBox(1, 1, -2, 1, 1, 0, 1);
-			engine.GetWorld().AddSphere(0, 0, -2, 1, 0, 1, 1);
-
 			menuPanel = new Core.UI.GMenuPanel(glControl, engine);
 			menuPanel.Clicks += (o, ee) => 
 			{
@@ -65,8 +62,31 @@ namespace Paint3D
 						HideUI();
 						glControl.Focus();
 						break;
-					case "Загрузить":  break;
-					case "Сохранить":  break;
+					case "Загрузить":
+						OpenFileDialog ofd = new OpenFileDialog();
+						ofd.Multiselect = false;
+						DialogResult res = ofd.ShowDialog(this);
+						if (res == DialogResult.OK)
+						{
+							string file = ofd.FileName;
+
+							List<Core.Models.GSaveObject> objs = (List<Core.Models.GSaveObject>)
+							engine.GetManagerFile().GetDataXMLFile(file, typeof(List<Core.Models.GSaveObject>));
+
+							for (int i = 0; i < objs.Count; i++)
+							{
+								if (objs[i].type == Core.Models.GSaveObject.TYPE.Cube)
+									engine.GetWorld().AddBox(objs[i].x, objs[i].y, objs[i].z, objs[i].rad, objs[i].r, objs[i].g, objs[i].b);
+								else if (objs[i].type == Core.Models.GSaveObject.TYPE.Sphere)
+									engine.GetWorld().AddSphere(objs[i].x, objs[i].y, objs[i].z, objs[i].rad, objs[i].r, objs[i].g, objs[i].b);
+							}
+						}
+					
+						break;
+					case "Сохранить":
+						Core.UI.SaveObjects so = new Core.UI.SaveObjects(engine);
+						so.ShowDialog(this);
+						break;
 					case "Выйти": Application.Exit(); break;
 				}
 			};

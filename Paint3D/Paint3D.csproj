@@ -111,6 +111,7 @@
     <Compile Include="Core\Models\GBaseModel.cs" />
     <Compile Include="Core\Models\GBox.cs" />
     <Compile Include="Core\Models\GPolygon.cs" />
+    <Compile Include="Core\Models\GSaveObject.cs" />
     <Compile Include="Core\Models\GSphere.cs" />
     <Compile Include="Core\UI\GButtonFlat.cs">
       <SubType>Component</SubType>
@@ -127,12 +128,6 @@
     <Compile Include="Core\UI\GMessageShow.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Core\UI\LoadObjects.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Core\UI\LoadObjects.Designer.cs">
-      <DependentUpon>LoadObjects.cs</DependentUpon>
-    </Compile>
     <Compile Include="Core\UI\SaveObjects.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,9 +142,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Core\UI\LoadObjects.resx">
-      <DependentUpon>LoadObjects.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Core\UI\SaveObjects.resx">
       <DependentUpon>SaveObjects.cs</DependentUpon>
     </EmbeddedResource>
