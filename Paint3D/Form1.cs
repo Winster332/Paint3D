@@ -14,6 +14,7 @@ namespace Paint3D
 	{
 		private Core.GEngine engine;
 		private Core.UI.GMenuPanel menuPanel;
+		private Core.UI.GPropPanel propPanel;
 		public Form1()
 		{
 			InitializeComponent();
@@ -69,16 +70,20 @@ namespace Paint3D
 					case "Выйти": Application.Exit(); break;
 				}
 			};
-		//	tb.ShowMessage("Stas");
+
+			propPanel = new Core.UI.GPropPanel(glControl);
 		}
 
 		private void ShowUI()
 		{
 			menuPanel.Visible = true;
+			propPanel.Visible = true;
+			
 		}
 		private void HideUI()
 		{
 			menuPanel.Visible = false;
+			propPanel.Visible = false;
 		}
 	}
 }

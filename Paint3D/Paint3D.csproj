@@ -118,12 +118,30 @@
     <Compile Include="Core\UI\GMenuPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Core\UI\GPropPanel.cs" />
-    <Compile Include="Core\UI\GScrollValue.cs" />
+    <Compile Include="Core\UI\GPropPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\UI\GScrollValue.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Core\UI\GTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Core\UI\GMessageShow.cs" />
+    <Compile Include="Core\UI\GMessageShow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\UI\LoadObjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\UI\LoadObjects.Designer.cs">
+      <DependentUpon>LoadObjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\UI\SaveObjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\UI\SaveObjects.Designer.cs">
+      <DependentUpon>SaveObjects.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +150,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Core\UI\LoadObjects.resx">
+      <DependentUpon>LoadObjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\UI\SaveObjects.resx">
+      <DependentUpon>SaveObjects.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
