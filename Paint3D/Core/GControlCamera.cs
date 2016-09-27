@@ -23,6 +23,7 @@ namespace Paint3D.Core
 		public float posX;
 		public float posY;
 		public float posZ;
+		public bool IsMouseLock;
 		/// <summary>
 		/// Инициализирует класс
 		/// </summary>
@@ -30,7 +31,8 @@ namespace Paint3D.Core
 		public GControlCamera(System.Windows.Forms.Control parent)
 		{
 			this.parent = parent;
-
+			
+			IsMouseLock = true;
 			speedMove = 0.05f;
 			lookX = 0;
 			lookY = 0;
@@ -54,7 +56,6 @@ namespace Paint3D.Core
 				case System.Windows.Forms.Keys.S: this.KEY_S = true; break;
 				case System.Windows.Forms.Keys.Space: this.KEY_SPACE = true; break;
 				case System.Windows.Forms.Keys.ControlKey: this.KEY_CTRL = true; break;
-				case System.Windows.Forms.Keys.Escape: System.Windows.Forms.Application.Exit(); break;
 			}
 		}
 		private void Parent_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -71,26 +72,29 @@ namespace Paint3D.Core
 		}
 		private void Parent_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-			float x = e.X - parent.Width / 2;
-			float y = e.Y - parent.Height / 2;
-
-			float nx = (float)Math.Cos(x / 50) * 40;
-			float ny = -(float)Math.Sin(y / 150) * 100;
-			float nz = (float)Math.Sin(x / 50) * 40;
-
-			lookX = nx;
-			lookY = ny;
-			lookZ = nz;
-
-			if (e.X > parent.Width / 2 + 230)
+			if (IsMouseLock)
 			{
-				System.Windows.Forms.Cursor.Position = new System.Drawing.Point((parent.Width / 2) - 70,
-					e.Y + 30);
-			}
-			if (e.X < 5)
-			{
-				System.Windows.Forms.Cursor.Position = new System.Drawing.Point((parent.Width / 2) + 70,
-					e.Y + 30);
+				float x = e.X - parent.Width / 2;
+				float y = e.Y - parent.Height / 2;
+
+				float nx = (float)Math.Cos(x / 50) * 40;
+				float ny = -(float)Math.Sin(y / 150) * 100;
+				float nz = (float)Math.Sin(x / 50) * 40;
+
+				lookX = nx;
+				lookY = ny;
+				lookZ = nz;
+
+				if (e.X > parent.Width / 2 + 230)
+				{
+					System.Windows.Forms.Cursor.Position = new System.Drawing.Point((parent.Width / 2) - 70,
+						e.Y + 30);
+				}
+				if (e.X < 5)
+				{
+					System.Windows.Forms.Cursor.Position = new System.Drawing.Point((parent.Width / 2) + 70,
+						e.Y + 30);
+				}
 			}
 		}
 		/// <summary>
@@ -98,35 +102,38 @@ namespace Paint3D.Core
 		/// </summary>
 		public void Update()
 		{
-			if (this.KEY_A)
+			if (IsMouseLock)
 			{
-				this.posX += lookZ / 500;
-				this.posZ -= lookX / 500;
-			}
-			if (this.KEY_D)
-			{
-				this.posX -= lookZ / 500;
-				this.posZ += lookX / 500;
-			}
-			if (this.KEY_W)
-			{
-				this.posX += lookX / 500;
-				this.posY += lookY / 500;
-				this.posZ += lookZ / 500;
-			}
-			if (this.KEY_S)
-			{
-				this.posX -= lookX / 500;
-				this.posY -= lookY / 500;
-				this.posZ -= lookZ / 500;
-			}
-			if (this.KEY_SPACE)
-			{
-				this.posY += speedMove;
-			}
-			if (this.KEY_CTRL)
-			{
-				this.posY -= speedMove;
+				if (this.KEY_A)
+				{
+					this.posX += lookZ / 500;
+					this.posZ -= lookX / 500;
+				}
+				if (this.KEY_D)
+				{
+					this.posX -= lookZ / 500;
+					this.posZ += lookX / 500;
+				}
+				if (this.KEY_W)
+				{
+					this.posX += lookX / 500;
+					this.posY += lookY / 500;
+					this.posZ += lookZ / 500;
+				}
+				if (this.KEY_S)
+				{
+					this.posX -= lookX / 500;
+					this.posY -= lookY / 500;
+					this.posZ -= lookZ / 500;
+				}
+				if (this.KEY_SPACE)
+				{
+					this.posY += speedMove;
+				}
+				if (this.KEY_CTRL)
+				{
+					this.posY -= speedMove;
+				}
 			}
 		}
 	}
