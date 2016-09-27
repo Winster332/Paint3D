@@ -13,6 +13,7 @@ namespace Paint3D
 	public partial class Form1 : Form
 	{
 		private Core.GEngine engine;
+		private Core.UI.GMenuPanel menuPanel;
 		public Form1()
 		{
 			InitializeComponent();
@@ -36,11 +37,13 @@ namespace Paint3D
 					{
 						engine.GetCamera().IsMouseLock = false;
 						Cursor.Show();
+						ShowUI();
 					}
 					else
 					{
 						engine.GetCamera().IsMouseLock = true;
 						Cursor.Hide();
+						HideUI();
 					}
 				}
 			};
@@ -48,9 +51,34 @@ namespace Paint3D
 			engine.GetWorld().AddBox(1, 1, -2, 1, 1, 0, 1);
 			engine.GetWorld().AddSphere(0, 0, -2, 1, 0, 1, 1);
 
-			var tb = new Core.UI.GMessageShow(glControl);
-			tb.ShowMessage("Stas");
-			//.Location = new Point(100, 100);
+			menuPanel = new Core.UI.GMenuPanel(glControl, engine);
+			menuPanel.Clicks += (o, ee) => 
+			{
+				string name = ((Button)o).Text.ToString();
+
+				switch (name)
+				{
+					case "Продолжить":
+						engine.GetCamera().IsMouseLock = true;
+						Cursor.Hide();
+						HideUI();
+						glControl.Focus();
+						break;
+					case "Загрузить":  break;
+					case "Сохранить":  break;
+					case "Выйти": Application.Exit(); break;
+				}
+			};
+		//	tb.ShowMessage("Stas");
+		}
+
+		private void ShowUI()
+		{
+			menuPanel.Visible = true;
+		}
+		private void HideUI()
+		{
+			menuPanel.Visible = false;
 		}
 	}
 }
